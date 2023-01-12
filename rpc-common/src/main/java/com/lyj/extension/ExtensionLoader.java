@@ -40,7 +40,7 @@ public class ExtensionLoader<T> {
         this.type = type;
     }
 
-    public static <S> ExtensionLoader<S> getExtensionLoader(Class<?> type){
+    public static <S> ExtensionLoader<S> getExtensionLoader(Class<S> type){
         if (type == null) {
             throw new IllegalArgumentException("Extension type should not be null.");
         }
