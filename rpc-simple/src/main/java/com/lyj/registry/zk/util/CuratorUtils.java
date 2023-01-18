@@ -33,7 +33,7 @@ public class CuratorUtils {
 
     private static final int MAX_RETRIES = 3;
 
-    public static final String ZK_REGISTER_ROOT_PATH = "/my-rpc";
+    public static final String ZK_REGISTER_ROOT_PATH = "/lyj-rpc";
 
     private static final Map<String, List<String>> SERVICE_ADDRESS_MAP = new ConcurrentHashMap<>();
 
@@ -73,7 +73,7 @@ public class CuratorUtils {
             return SERVICE_ADDRESS_MAP.get(rpcServiceName);
         }
         List<String> result = null;
-        String path = DEFAULT_ZOOKEEPER_ADDRESS+"/"+rpcServiceName;
+        String path = ZK_REGISTER_ROOT_PATH+"/"+rpcServiceName;
         try {
             result = zkClient.getChildren().forPath(path);
             SERVICE_ADDRESS_MAP.put(rpcServiceName,result);
@@ -138,7 +138,7 @@ public class CuratorUtils {
         String servicePath = ZK_REGISTER_ROOT_PATH + "/" +rpcServiceName;
         PathChildrenCache pathChildrenCache = new PathChildrenCache(zkClient, servicePath, true);
         PathChildrenCacheListener pathChildrenCacheListener = ((curatorFramework, pathChildrenCacheEvent) -> {
-            List<String> serviceAddresses = curatorFramework.getChildren().forPath(rpcServiceName);
+            List<String> serviceAddresses = curatorFramework.getChildren().forPath(servicePath);
             SERVICE_ADDRESS_MAP.put(rpcServiceName,serviceAddresses);
         });
         pathChildrenCache.getListenable().addListener(pathChildrenCacheListener);
