@@ -1,5 +1,7 @@
 package com.lyj.exception;
 
+import com.lyj.enums.RpcErrorMessageEnum;
+
 /**
  * @program: My-Rpc
  * @description:

@@ -1,5 +1,7 @@
 package com.lyj.serialize;
 
+import com.lyj.extension.SPI;
+
 /**
  * @program: My-Rpc
  * @description:  序列化接口，所有序列化类都要实现这个接口
@@ -7,6 +9,7 @@ package com.lyj.serialize;
  * @create: 2023-01-09 22:00
  **/
 
+@SPI
 public interface Serializer {
 
     /**

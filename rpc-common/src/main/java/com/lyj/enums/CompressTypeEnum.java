@@ -13,7 +13,7 @@ import lombok.Getter;
 @Getter
 public enum CompressTypeEnum {
 
-    GIZP((byte)0x01,"gizp");
+    GZIP((byte)0x01,"gzip");
 
     private final byte code;
 
